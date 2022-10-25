@@ -1,7 +1,18 @@
-# Vue 3 + Vite
+# Manuel Navarro - Job listings with filtering
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Esta es una solución al [desafío de listados de trabajos con filtrado de Frontend Mentor](https://www.frontendmentor.io/challenges/qr-code-component-iux_sIO_H).
 
-## Recommended IDE Setup
+## Vista Previa
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+![Preview](./public/preview.png)
+
+## Stack Tecnológico
+
+- Vue.js
+- Tailwind CSS
+
+## Autor
+
+- Website - [manuelnavarrodev.es](https://manuelnavarrodev.es/)
+- Linkedln - [Manuel Navarro Higueras](https://www.linkedin.com/in/manuel-navarro-higueras/)
+- Twitter - [@ManuNH98](https://www.twitter.com/ManuNH98)
