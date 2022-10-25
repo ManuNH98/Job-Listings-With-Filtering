@@ -16,6 +16,7 @@ module.exports = {
     colors: {
       // Primary
       dark_cyan: "hsl(180, 29%, 50%)",
+      white: "#fff",
       // Neutral
       light_grayish_cyan_bg: "hsl(180, 52%, 96%)", //Background
       light_grayish_cyan_filter: "hsl(180, 31%, 95%)", //Filter Tablets
