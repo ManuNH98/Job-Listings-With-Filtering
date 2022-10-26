@@ -12,8 +12,34 @@
         class="h-auto w-full bg-dark_cyan flex desktop:hidden"
       />
     </header>
-    <section class="p-7 py-16 desktop:p-20 bg-light_grayish_cyan_bg">
-      <div class="flex flex-col gap-y-10 desktop:gap-y-8">
+    <section class="bg-light_grayish_cyan_bg">
+      <div
+        id="filter"
+        class="flex justify-between items-center relative bottom-10 mx-20 bg-white rounded-md shadow-lg p-5"
+      >
+        <div class="flex justify-center items-center gap-x-3">
+          <div
+            v-for="tag in tags"
+            :key="tag"
+            class="flex items-center justify-center gap-x-2.5 rounded-sm text-dark_cyan bg-dark_cyan bg-opacity-20 font-bold p-1.5"
+          >
+            <button>{{ tag }}</button>
+            <button class="bg-dark_cyan">
+              <img @click="deleteTag(tag)" src="./assets/images/icon-remove.svg" alt="Remove" />
+            </button>
+          </div>
+        </div>
+        <div class>
+          <button
+            @click="deleteAllTags()"
+            class="underline underline-offset-2 text-dark_cyan font-bold"
+          >Clear</button>
+        </div>
+      </div>
+      <div
+        id="jobList"
+        class="flex flex-col gap-y-10 desktop:gap-y-8 p-7 py-16 desktop:py-5 desktop:px-20"
+      >
         <div
           v-for="job in jobs"
           :key="job"
@@ -52,17 +78,21 @@
             </div>
             <div class="flex flex-wrap gap-5 items-center pt-2 desktop:pt-0">
               <button
+                @click="addTags(job.role)"
                 class="text-dark_cyan bg-dark_cyan bg-opacity-20 rounded-sm font-bold p-1 px-2"
               >{{ job.role }}</button>
               <button
+                @click="addTags(job.level)"
                 class="text-dark_cyan bg-dark_cyan bg-opacity-20 rounded-sm font-bold font-bold p-1 px-2"
               >{{ job.level }}</button>
               <button
+                @click="addTags(lang)"
                 v-for="lang in job.languages"
                 :key="lang"
                 class="text-dark_cyan bg-dark_cyan bg-opacity-20 rounded-sm font-bold font-bold p-1 px-2"
               >{{ lang }}</button>
               <button
+                @click="addTags(tool)"
                 v-for="tool in job.tools"
                 :key="tool"
                 class="text-dark_cyan bg-dark_cyan bg-opacity-20 rounded-sm font-bold font-bold p-1 px-2"
@@ -80,6 +110,11 @@ import jobs from "./assets/json/data.json";
 
 export default {
   name: "App",
+  data() {
+    return {
+      tags: []
+    };
+  },
   computed: {
     jobs() {
       return jobs.map(job => {
@@ -87,11 +122,32 @@ export default {
       });
     }
   },
+  updated() {
+    this.getTags;
+  },
   methods: {
     filterJobs(job) {
       return jobs.filter(jb => {
         jb == job;
       });
+    },
+    getTags() {
+      return this.tags.map(tag => {
+        return tag;
+      });
+    },
+    addTags(job) {
+      this.tags.push(job);
+    },
+    deleteAllTags() {
+      this.tags.splice(0);
+    },
+    deleteTag(tag) {
+      let index = this.tags.indexOf(tag);
+      if (index != -1) {
+        this.tags.splice(index, 1);
+      }
+      console.log(this.tags);
     }
   }
 };
